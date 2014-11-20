@@ -4,6 +4,8 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="datatables" uri="http://github.com/dandelion/datatables" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <html lang="en">
 
@@ -28,6 +30,19 @@
                 <button type="submit">Find Owner</button>
             </div>
         </fieldset>
+        
+       <datatables:table id="vets" data="${vets.vetList}" row="vet" theme="bootstrap3" cssClass="table table-striped" pageable="false" info="false">
+        <datatables:column title="Name">
+            <c:out value="${vet.firstName} ${vet.lastName}"></c:out>
+        </datatables:column>
+        <datatables:column title="Specialties">
+            <c:forEach var="specialty" items="${vet.specialties}">
+                <c:out value="${specialty.name}"/>
+            </c:forEach>
+            <c:if test="${vet.nrOfSpecialties == 0}">none</c:if>
+        </datatables:column>
+    </datatables:table>
+    
     </form:form>
 
     <br/>
