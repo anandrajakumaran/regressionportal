@@ -27,11 +27,15 @@
     http://blog.ippon.fr/2013/03/13/improving-the-performance-of-the-spring-petclinic-sample-application-part-3-of-5/-->
     <bean id="dataSource" class="org.apache.tomcat.jdbc.pool.DataSource"
           p:driverClassName="${jdbc.driverClassName}" p:url="${jdbc.url}"
-          p:username="${jdbc.username}" p:password="${jdbc.password}"/>
+          p:username="${jdbc.username}" p:password="${jdbc.password}"
+          p:maxActive="20" p:timeBetweenEvictionRunsMillis="300000"
+          p:validationQuery="SELECT 'OK'"
+          p:testWhileIdle="true" p:testOnBorrow="true"
+          p:numTestsPerEvictionRun="5"  />
 
     <!-- Database initializer. If any of the script fails, the initialization stops. -->
     <!-- As an alternative, for embedded databases see <jdbc:embedded-database/>. -->
-    <jdbc:initialize-database data-source="dataSource">
+    <jdbc:initialize-database data-source="dataSource" enabled="false">
         <jdbc:script location="${jdbc.initLocation}"/>
         <jdbc:script location="${jdbc.dataLocation}"/>
     </jdbc:initialize-database>
