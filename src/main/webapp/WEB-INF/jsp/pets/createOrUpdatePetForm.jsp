@@ -11,11 +11,11 @@
 <jsp:include page="../fragments/headTag.jsp"/>
 <body>
 
-<script>
+<!-- <script>
     $(function () {
         $("#birthDate").datepicker({ dateFormat: 'yy/mm/dd'});
     });
-</script>
+</script> -->
 <div class="container">
     <jsp:include page="../fragments/bodyHeader.jsp"/>
     <c:choose>

@@ -17,26 +17,26 @@
     <h2>Regression Requests</h2>
 
     <datatables:table id="vets" data="${project}" row="project" theme="jqueryui"
-     cssClass="table table-striped " pageable="true" autoWidth="true" export="pdf" displayLength="2">
+     cssClass="table table-striped " pageable="true" autoWidth="true" export="pdf" displayLength="10">
 
-        <datatables:column title="Name" >
-            <c:out value="${project.submitter}"></c:out>
+        <datatables:column title="Component" >
+            <c:out value="${project.component}"></c:out>
         </datatables:column>
-           <datatables:column title="Submitter" >
+           <datatables:column title="Release Date" >
+            <c:out value="${project.release_date}"></c:out>
+        </datatables:column>
+<%--            <datatables:column title="Jira Id" >
+            <c:out value="${project.sme_status}"></c:out>
+        </datatables:column> --%>
+           <datatables:column title="Jira ID" >
             <c:out value="${project.jira_id}"></c:out>
         </datatables:column>
-           <datatables:column title="Jira Id" >
-            <c:out value="${project.sme_status}"></c:out>
-        </datatables:column>
-           <datatables:column title="SME Status" >
-            <c:out value="${project.regression_status}"></c:out>
-        </datatables:column>
-         <datatables:column title="Automation Link" >
+<%--          <datatables:column title="Automation Link" >
          	<a href="${project.automation_link}"> Automation </a>
         </datatables:column>
         <datatables:column title="Fusion Link" >
         	<a href="${project.fusion_link}"> Fusion Job link </a>
-        </datatables:column>
+        </datatables:column> --%>
     </datatables:table>
     
 <%--     <table class="table-buttons">
